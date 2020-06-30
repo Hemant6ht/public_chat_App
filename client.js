@@ -1,4 +1,4 @@
-const socket = io('http://localhost:8000');
+const socket = io('http://192.168.43.217:8000');
 const form = document.getElementById('msg-frm');
 const message = document.getElementById('msg');
 const msgcontainer = document.getElementById('msg-section');
@@ -29,17 +29,21 @@ socket.emit('new-user-joined',name);
 
 socket.on('user-joined',name =>{
     append(`${name} joined the chat`,'left');
+    msgcontainer.scrollTop=msgcontainer.scrollHeight;
 });
 form.addEventListener('submit',(e)=>{
     e.preventDefault();
     const msg=message.value;
     append(`You: ${msg}`,'right');
     message.value="";
+    msgcontainer.scrollTop=msgcontainer.scrollHeight;
     socket.emit('sendmsg',msg);
 });
 socket.on('recieve',data =>{
     append(`${data.name}: ${data.message}`,'left');
+    msgcontainer.scrollTop=msgcontainer.scrollHeight;
 })
 socket.on('left',name =>{
     append(`${name} left the group`,'left');
+    msgcontainer.scrollTop=msgcontainer.scrollHeight;
 })

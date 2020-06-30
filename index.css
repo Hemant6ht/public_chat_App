@@ -42,6 +42,17 @@ body::before{
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
 }
+.logoname{
+    display:flex;
+    justify-content: center;
+}
+.companyname{
+    color:white;
+    font-family: monospace;
+    margin-left: 1rem;
+    margin-top: 0.5rem;
+    vertical-align: center;
+}
 .navigation img{
     height:3rem;
     width:3rem;
